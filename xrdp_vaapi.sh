@@ -43,7 +43,7 @@ sed -i 's|/opt/yami|/usr/local|g' ./xorgxrdp_helper/xorgxrdp_helper_yami.c
 ./bootstrap
 XRDP_YAMI_CFLAGS="-I/usr/local/include" XRDP_YAMI_LIBS="-I/usr/local/lib" ./configure \
     --enable-fuse --enable-rfxcodec --enable-pixman --enable-mp3lame \
-    --enable-sound --enable-opus --enable-fdkaac --enable-x264 --enable-yami
+    --enable-sound --enable-opus --enable-fdkaac --enable-x264 --enable-yami --enable-avc444
 make -j $((`nproc` - 1)) clean all
 sudo make install
 
