@@ -28,7 +28,7 @@ BUILD_DIR=$HOME
 
 echo "Building Intel YAMI and Media Driver"
 sudo mkdir -p /usr/local/lib/x86_64-linux-gnu
-git clone https://github.com/tabletseeker/igpu_essential.git --branch master "$BUILD_DIR/igpu_essential"
+git clone https://github.com/tabletseeker/igpu_essential.git --branch update-to-media-driver "$BUILD_DIR/igpu_essential"
 cd "$BUILD_DIR/igpu_essential/yami/omatic"
 ./buildyami.sh --prefix=/usr/local --enable-x11
 sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/i965_drv_video.so /usr/local/lib/x86_64-linux-gnu/
