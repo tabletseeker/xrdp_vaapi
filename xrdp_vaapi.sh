@@ -103,6 +103,9 @@ SUBSYSTEM=="kfd", GROUP="render", MODE="0666"
 EOF
 '
 
+echo "Enabling VM Boot with -vga none (qemu) | Video=none (libvirt)"
+sudo sed -i "s/#GRUB_TERMINAL=console/GRUB_TERMINAL=console/" /etc/default/grub
+
 echo "Starting the server..."
 sudo systemctl enable xrdp
 sudo service xrdp start
