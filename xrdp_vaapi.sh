@@ -95,6 +95,14 @@ EOL
 sudo sed -i -E 's#param=xrdp/xorg_nvidia.conf#param=xrdp/xorg.conf#' /etc/xrdp/sesman.ini
 sudo sed -i 's/XRDP_USE_HELPER=1/XRDP_USE_HELPER=0/' /etc/xrdp/sesman.ini
 
+echo "Adding udev rule for glamor accellerated session"
+sudo /bin/bash -c 'cat > /usr/lib/udev/rules.d/90-xorgxrdp-dri.rules << EOF
+# installed by xorgxrdp. allows every user to use glamor accellerated session
+SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="render", MODE="0666"
+SUBSYSTEM=="kfd", GROUP="render", MODE="0666"
+EOF
+'
+
 echo "Starting the server..."
 sudo systemctl enable xrdp
 sudo service xrdp start
