@@ -16,3 +16,12 @@ cd xrdp_vaapi
 ```
 bash xrdp_vaapi.sh | tee build.log
 ```
+
+### Arguments
+|  Arg                                             | Description                                          | Value                                                                                          
+| ---------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------|
+| --prefix          | Build install directory       | default: /usr/local
+| --enable-x11      | Build with X11 enabled  		      | default: on |
+| --dusavke-x11      | Build with X11 disabled  		      | default: off |
+| DRIVER_NAME         | LIBVA_DRIVER_NAME Env Variable                 | default: iHD |
+| BUILD_DIR         |  Build source directory              | default: $HOME |
