@@ -25,6 +25,7 @@ sudo apt-get install -y git autoconf libtool pkg-config gcc g++ make libssl-dev 
 sudo apt-get install -y libepoxy-dev
 
 BUILD_DIR=$HOME
+DRIVER_NAME=iHD
 
 echo "Building Intel YAMI and Media Driver"
 sudo mkdir -p /usr/local/lib/x86_64-linux-gnu
@@ -107,7 +108,7 @@ echo "Enabling VM Boot with -vga none (qemu) | Video=none (libvirt)"
 sudo sed -i "s/#GRUB_TERMINAL=console/GRUB_TERMINAL=console/" /etc/default/grub
 
 echo "Adding LIBVA_DRIVER_NAME ENV Variable to sesman.ini"
-sudo /bin/bash -c 'echo "LIBVA_DRIVER_NAME=iHD" >> /etc/xrdp/sesman.ini'
+sudo /bin/bash -c "echo LIBVA_DRIVER_NAME=$DRIVER_NAME >> /etc/xrdp/sesman.ini"
 
 echo "Starting the server..."
 sudo systemctl enable xrdp
