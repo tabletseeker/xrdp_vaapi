@@ -106,6 +106,9 @@ EOF
 echo "Enabling VM Boot with -vga none (qemu) | Video=none (libvirt)"
 sudo sed -i "s/#GRUB_TERMINAL=console/GRUB_TERMINAL=console/" /etc/default/grub
 
+echo "Adding LIBVA_DRIVER_NAME ENV Variable to sesman.ini"
+sudo /bin/bash -c 'echo "LIBVA_DRIVER_NAME=iHD" >> /etc/xrdp/sesman.ini'
+
 echo "Starting the server..."
 sudo systemctl enable xrdp
 sudo service xrdp start
