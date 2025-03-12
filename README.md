@@ -1,7 +1,7 @@
 ![o,age](https://i.postimg.cc/zXrvRN2s/Untitled.png)
 
-Automatically builds xrdp with intel va-api hardware acceleration support and sets up a working VM environment for Debian/Ubuntu. \
-Intended for use with [i915-sriov-dkms](https://github.com/strongtz/i915-sriov-dkms) in libvirt/qemu virtual machines, but also usable otherwise.
+Automatically builds xrdp (remote desktop server) with intel va-api hardware acceleration support and sets up a working VM environment for Debian/Ubuntu. \
+Intended for use with [i915-sriov-dkms](https://github.com/strongtz/i915-sriov-dkms) in libvirt/qemu virtual machines, but also applicable otherwise.
  
 ## Usage
 * Clone xrdp_vaapi repo:
