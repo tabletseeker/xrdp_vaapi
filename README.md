@@ -1,4 +1,4 @@
-![o,age](https://i.postimg.cc/zXrvRN2s/Untitled.png)
+![o,age](https://i.postimg.cc/2ys32VSp/Untitled.png)
 
 Automatically builds xrdp (remote desktop server) with intel va-api hardware acceleration support and sets up a working VM environment for Debian/Ubuntu. \
 Intended for use with [i915-sriov-dkms](https://github.com/strongtz/i915-sriov-dkms) in libvirt/qemu virtual machines, but also applicable otherwise.
