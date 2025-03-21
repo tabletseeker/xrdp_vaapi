@@ -14,7 +14,7 @@ cd xrdp_vaapi
 ```
 * Execute:
 ```
-bash xrdp_vaapi.sh | tee build.log
+bash xrdp_vaapi.sh
 ```
 
 ### Arguments
