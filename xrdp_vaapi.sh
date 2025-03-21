@@ -31,7 +31,7 @@ DRIVER_NAME=iHD
 echo "Building Intel YAMI and Media Driver"
 mkdir -p ${BUILD_DIR}
 sudo mkdir -p /usr/local/lib/x86_64-linux-gnu
-${SOURCE_DIR}/yami/omatic/buildyami.sh
+bash ${SOURCE_DIR}/yami/omatic/buildyami.sh
 
 sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/i965_drv_video.so /usr/local/lib/x86_64-linux-gnu/
 sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/iHD_drv_video.so /usr/local/lib/x86_64-linux-gnu/
