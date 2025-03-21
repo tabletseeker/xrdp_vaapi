@@ -209,10 +209,6 @@ error_check "make" "libyami"
 sudo make install-strip
 error_check "install" "libyami"
 
-YAMI_INF_DIR=$(sudo find / -type d 2> /dev/null | grep /igpu_essential/yami/omatic/yami_inf)
-
-[ -z ${YAMI_INF_DIR} ] && { echo "yami_inf directory not found!"; exit 1; }
-
 cd ${YAMI_INF_DIR}
 ./bootstrap
 error_check "bootstrap" "yami_inf"
@@ -232,6 +228,7 @@ error_check "install" "yami_inf"
 BUILD_STAGE=("configuration" "build" "install")
 CUSTOM="true"
 BUILD_DRIVERS_DIR=$PWD/drivers_build
+YAMI_INF_DIR=${SOURCE_DIR}/yami/omatic/yami_inf
 INSTALL_PATH=/usr/local
 LIBRARY_INSTALLATION_DIR=$INSTALL_PATH/lib/x86_64-linux-gnu
 
