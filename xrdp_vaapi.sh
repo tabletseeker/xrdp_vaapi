@@ -24,14 +24,15 @@ sudo apt-get install -y git autoconf libtool pkg-config gcc g++ make libssl-dev 
 #XRDP Build Pre-reqs Part 2 (For some reason apt needs this to be separate)
 sudo apt-get install -y libepoxy-dev
 
-BUILD_DIR=$HOME
+export SOURCE_DIR=$(find ${PWD%/*} -type d -name "xrdp_vaapi" | head -1) 
+BUILD_DIR=${PWD}/xrdp_build
 DRIVER_NAME=iHD
 
 echo "Building Intel YAMI and Media Driver"
+mkdir -p ${BUILD_DIR}
 sudo mkdir -p /usr/local/lib/x86_64-linux-gnu
-git clone https://github.com/tabletseeker/igpu_essential.git --branch update-to-media-driver "$BUILD_DIR/igpu_essential"
-cd "$BUILD_DIR/igpu_essential/yami/omatic"
-./buildyami.sh --prefix=/usr/local --enable-x11
+${SOURCE_DIR}/yami/omatic/buildyami.sh
+
 sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/i965_drv_video.so /usr/local/lib/x86_64-linux-gnu/
 sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/iHD_drv_video.so /usr/local/lib/x86_64-linux-gnu/
 sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/ /usr/local/lib/dri
