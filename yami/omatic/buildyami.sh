@@ -107,7 +107,7 @@ case ${1} in
 
 	build)
 
-	[[ ${SOURCE_NAME} =~ ${libva-[0-9.]+} ]] && \
+	[[ ${SOURCE_NAME} =~ ^libva-[0-9.]+$ ]] && \
 	{ echo "" >> config.h; echo "#define va_log_info(buffer)" >> config.h; echo "" >> config.h; }
 	
 	case ${2} in
