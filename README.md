@@ -18,10 +18,15 @@ bash xrdp_vaapi.sh
 ```
 
 ### Arguments
-|  Arg                                             | Description                                          | Value                                                                                          
+|  xrdp_vaapi.sh                                              | Description                                          | Value                                                                                      
+| ---------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------|
+| DRIVER_NAME         | LIBVA_DRIVER_NAME Env Variable                 | default: iHD |
+| BUILD_DIR         |  Build source directory              | default: $PWD |
+
+
+|  buildyami.sh                                             | Description                                          | Value                                                                                          
 | ---------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------|
 | --prefix          | Build install directory       | default: /usr/local
-| --enable-x11      | Build with X11 enabled  		      | default: on |
-| --dusavke-x11      | Build with X11 disabled  		      | default: off |
-| DRIVER_NAME         | LIBVA_DRIVER_NAME Env Variable                 | default: iHD |
-| BUILD_DIR         |  Build source directory              | default: $HOME |
+| --disable-x11      | Build with X11 disabled  		      | default: off |
+| --latest      | Automatically find the latest versions | default: off |
+* If `--latest` is not used, the version numbers stated in `xrdp_vaapi/yami/omatic/buildyami.sh` lines 243 - 247 will apply.
