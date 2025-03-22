@@ -30,3 +30,17 @@ bash xrdp_vaapi.sh
 | --disable-x11      | Build with X11 disabled  		      | default: off |
 | --latest      | Automatically find the latest versions | default: off |
 * If `--latest` is not used, the version numbers stated in `xrdp_vaapi/yami/omatic/buildyami.sh` lines 243 - 247 will apply.
+
+
+### Sources
+Debian/Ubuntu users must ensure a complete `/etc/apt/sources.list` for all packages to be installed successfully.
+- Debian
+```
+deb https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+deb https://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+```
+- Ubuntu
+```
+deb http://de.archive.ubuntu.com/ubuntu noble main restricted universe multiverse
+deb-src http://de.archive.ubuntu.com/ubuntu noble main restricted universe multiverse
+```
