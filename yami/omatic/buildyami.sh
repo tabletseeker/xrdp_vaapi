@@ -88,17 +88,14 @@ case ${1} in
 	case ${2} in
 
 		meson)
-		
 		meson _build -Dprefix=$INSTALL_PATH "${CONFIG}"
 		;;
 
 		configure)
-		
 		./configure --prefix=$INSTALL_PATH "${CONFIG}"
 		;;
 		
 		cmake)
-		
 		mkdir _build
 		cd _build
 		cmake "${BUILD_ARGS}" "${CONFIG}" ..
@@ -116,17 +113,14 @@ case ${1} in
 	case ${2} in
 
 		meson)
-		
 		ninja -C _build
 		;;
 
 		configure)
-		
 		make -j"$((`nproc` - 1))"
 		;;
 		
 		cmake)
-
 		make -j"$((`nproc` - 1))"
 		;;
 
@@ -139,18 +133,15 @@ case ${1} in
 	case ${2} in
 
 		meson)
-		
 		cd _build
 		sudo meson install
 		;;
 
 		configure)
-		
 		sudo make install-strip
 		;;
 		
 		cmake)
-
 		sudo make install
 		;;
 
