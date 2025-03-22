@@ -5,8 +5,8 @@
 BUILD_DIR=${PWD}/build
 CUSTOM_VER=""
 REPO="FreeRDP/FreeRDP"
-GIT_URL="https://api.github.com/repos/${REPO}/tags"
-BRANCH=$(curl -s ${GIT_URL} | jq '.[]' | jq -r '.name' | grep -Pm1 "${CUSTOM_VER}")
+GIT_URL="https://github.com/${REPO}/releases/latest"
+BRANCH=$(curl -Ls -o /dev/null -w %{url_effective} ${GIT_URL} | sed -e 's@.*/@@')
 
 mkdir -p "$BUILD_DIR"
 rm -rf "$BUILD_DIR/*"
