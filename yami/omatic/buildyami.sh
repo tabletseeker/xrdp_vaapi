@@ -88,17 +88,17 @@ case ${1} in
 	case ${2} in
 
 		meson)
-		meson _build -Dprefix=$INSTALL_PATH "${CONFIG}"
+		meson _build -Dprefix=$INSTALL_PATH ${CONFIG}
 		;;
 
 		configure)
-		./configure --prefix=$INSTALL_PATH "${CONFIG}"
+		./configure --prefix=$INSTALL_PATH ${CONFIG}
 		;;
 		
 		cmake)
 		mkdir _build
 		cd _build
-		cmake "${BUILD_ARGS}" "${CONFIG}" ..
+		cmake ${BUILD_ARGS} ${CONFIG} ..
 		;;
 
 	esac
