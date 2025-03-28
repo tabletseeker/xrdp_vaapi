@@ -178,7 +178,7 @@ done
 
 error_check() {
 
-	[ $? -ne 0 ] && {  echo "error during ${1} ${2}"; exit 1; }
+	[ $? -eq 0 ] || {  echo "error during ${1} ${2}"; exit 1; }
 
 }
 
