@@ -234,7 +234,7 @@ LIBYAMI_INF_CONFIG="--enable-x11"
 LIBDRM=("lab|rel|get" "177" "2.4.124" "meson" "" "$LIBDRM_CONFIG")
 LIBVA=("hub|rel|get" "intel/libva" "2.22.0" "meson" "" "$LIBVA_CONFIG")
 LIBVAUTILS=("hub|rel|get" "intel/libva-utils" "2.22.0" "configure" "" "$LIBVAUTILS_CONFIG")
-INTEL_MEDIA=("clone" "intel/media-driver" "25.1.3" "cmake" "libx11-xcb-dev libxcb-dri3-dev" "$INTEL_MEDIA_DRIVER_CONFIG")
+INTEL_MEDIA=("clone" "intel/media-driver" "25.1.4" "cmake" "libx11-xcb-dev libxcb-dri3-dev" "$INTEL_MEDIA_DRIVER_CONFIG")
 INTEL_GMMLIB=("hub|tag|get" "intel/gmmlib" "22.7.0" "cmake" "libx11-xcb-dev libxcb-dri3-dev" "$INTEL_GMMLIB_CONFIG")
 
 PACKAGES=(LIBDRM[@]
