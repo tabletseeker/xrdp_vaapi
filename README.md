@@ -17,7 +17,7 @@ cd xrdp_vaapi
 bash xrdp_vaapi.sh
 ```
 
-### Arguments
+### Arguments & Env Variables
 |  xrdp_vaapi.sh                                              | Description                                          | Value                                                                                      
 | ---------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------|
 | DRIVER_NAME         | LIBVA_DRIVER_NAME Env Variable                 | default: iHD |
