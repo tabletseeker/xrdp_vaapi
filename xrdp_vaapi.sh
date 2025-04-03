@@ -27,6 +27,15 @@ sudo apt-get install -y libepoxy-dev
 export SOURCE_DIR=$(find ${PWD%${PWD#/*/}} -type d -name "xrdp_vaapi" | head -1) 
 BUILD_DIR=${SOURCE_DIR}/xrdp_build
 DRIVER_NAME=iHD
+SRIOV=false
+
+case ${@} in
+    
+    *--sriov*|*-s*)
+    SRIOV=true
+    ;;
+    
+esac
 
 echo "Building Intel YAMI and Media Driver"
 mkdir -p ${BUILD_DIR}
@@ -96,6 +105,22 @@ EOL
 #Disable nvidia
 sudo sed -i -E 's#param=xrdp/xorg_nvidia.conf#param=xrdp/xorg.conf#' /etc/xrdp/sesman.ini
 sudo sed -i 's/XRDP_USE_HELPER=1/XRDP_USE_HELPER=0/' /etc/xrdp/sesman.ini
+
+#Installing i915_sriov_dkms
+if ${SRIOV}; then
+echo "Installing i915_sriov_dkms kernel module"
+SRIOV_CLONE="https://github.com/strongtz/i915-sriov-dkms"
+SRIOV_GIT="${SRIOV_CLONE}/releases/latest"
+VERSION=$(curl -Ls -o /dev/null -w %{url_effective} ${SRIOV_GIT} | sed -e 's@.*/@@')
+
+sudo apt-get install -y build-* git dkms linux-headers-$(uname -r)
+cd ${BUILD_DIR}
+git clone ${SRIOV_CLONE} --branch master
+sudo dkms add ./i915-sriov-dkms
+sudo dkms install i915-sriov-dkms/${VERSION}
+sudo sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT=".*"|GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on i915.enable_guc=3 module_blacklist=xe"|' /etc/default/grub
+
+fi
 
 echo "Adding udev rule for glamor accellerated session"
 sudo /bin/bash -c 'cat > /usr/lib/udev/rules.d/90-xorgxrdp-dri.rules << EOF
