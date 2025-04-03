@@ -22,6 +22,7 @@ bash xrdp_vaapi.sh
 | ---------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------|
 | DRIVER_NAME         | LIBVA_DRIVER_NAME Env Variable                 | default: iHD |
 | BUILD_DIR         |  Build source directory              | default: $PWD |
+| --sriov \| -s      |  Build and install i915_sriov_dkms      | default: false |
 
 
 |  buildyami.sh                                             | Description                                          | Value                                                                                          
