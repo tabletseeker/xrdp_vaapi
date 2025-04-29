@@ -19,7 +19,7 @@ sudo apt-get install -y git autoconf libtool pkg-config gcc g++ make libssl-dev 
     xutils-dev python3-libxml2 g++ xutils libfuse-dev libmp3lame-dev nasm libpixman-1-dev \
     xserver-xorg-dev libjson-c-dev libsndfile1-dev libspeex-dev libspeexdsp-dev libpulse-dev \
     libpulse0 autopoint \*turbojpeg\* libfdk-aac-dev libopus-dev libgbm-dev libx264\* \
-    libx264-dev build-essential dpkg-dev wget libfuse3-dev
+    libx264-dev build-essential dpkg-dev wget libfuse3-dev lsb-release
 
 #XRDP Build Pre-reqs Part 2 (For some reason apt needs this to be separate)
 sudo apt-get install -y libepoxy-dev
