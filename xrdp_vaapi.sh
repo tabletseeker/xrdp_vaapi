@@ -49,8 +49,8 @@ sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/ /usr/local/lib/dri; } || true
 echo "Building xrdp..."
 git clone https://github.com/neutrinolabs/xrdp.git --branch devel "$BUILD_DIR/xrdp"
 cd "$BUILD_DIR/xrdp"
-sed -i 's|/opt/yami|/usr/local|g' ./sesman/Makefile.am
-sed -i 's|/opt/yami|/usr/local|g' ./xorgxrdp_helper/xorgxrdp_helper_yami.c
+#sed -i 's|/opt/yami|/usr/local|g' ./sesman/Makefile.am
+#sed -i 's|/opt/yami|/usr/local|g' ./xorgxrdp_helper/xorgxrdp_helper_yami.c
 ./bootstrap
 XRDP_YAMI_CFLAGS="-I/usr/local/include" XRDP_YAMI_LIBS="-I/usr/local/lib" ./configure \
     --enable-fuse --enable-rfxcodec --enable-pixman --enable-mp3lame \
