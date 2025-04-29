@@ -285,4 +285,4 @@ cd $BUILD_DRIVERS_DIR
 
 download_source
 build_source
-#build_yami
+build_yami
