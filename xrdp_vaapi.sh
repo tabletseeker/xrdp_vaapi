@@ -24,7 +24,7 @@ sudo apt-get install -y git autoconf libtool pkg-config gcc g++ make libssl-dev 
 #XRDP Build Pre-reqs Part 2 (For some reason apt needs this to be separate)
 sudo apt-get install -y libepoxy-dev
 
-export SOURCE_DIR=$(find ${PWD%${PWD#/*/}} -type d -name "xrdp_vaapi" | head -1) 
+export SOURCE_DIR=$(find ${PWD%${PWD#/*/}} -type d -name "*xrdp_vaapi*" | head -1) 
 BUILD_DIR=${SOURCE_DIR}/xrdp_build
 DRIVER_NAME=iHD
 SRIOV=false
