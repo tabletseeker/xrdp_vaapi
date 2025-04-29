@@ -37,8 +37,10 @@ bash xrdp_vaapi.sh
 Debian/Ubuntu users must ensure a complete `/etc/apt/sources.list` for all packages to be installed successfully.
 - Debian
 ```
-deb https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb https://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb https://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb-src https://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb https://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-src https://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 ```
 - Ubuntu
 ```
