@@ -5,7 +5,7 @@ set -e
 sudo -v
 
 sudo apt-get update
-sudo apt-get dist-upgrade -y
+#sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
 
 sudo usermod $USER -a -G video
