@@ -5,7 +5,7 @@ sudo -v
 # Packages necessary for building the Intel drivers as well as for
 # YAMI to initialize properly at runtime.
 sudo apt-get -y install autoconf libtool libdrm-dev xorg xorg-dev \
-openbox libx11-dev libegl1-mesa libegl1-mesa-dev \
+openbox libx11-dev libegl1-mesa-dev \
 libgl1-mesa-dev meson doxygen cmake libx11-xcb-dev libxcb-dri3-dev \
 jq wget libx11-xcb-dev libxcb-dri3-dev
 
