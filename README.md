@@ -6,7 +6,7 @@ Intended for use with [i915-sriov-dkms](https://github.com/strongtz/i915-sriov-d
 ## Usage
 * Clone xrdp_vaapi repo:
 ```
-git clone https://github.com/tabletseeker/xrdp_vaapi -b main
+git clone https://github.com/tabletseeker/xrdp_vaapi -b master
 ```
 * Enter directory:
 ```
