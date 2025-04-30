@@ -47,10 +47,10 @@ sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/iHD_drv_video.so /usr/local/lib/x
 sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/ /usr/local/lib/dri; } || true
 
 echo "Building xrdp..."
-git clone https://github.com/neutrinolabs/xrdp.git --branch devel "$BUILD_DIR/xrdp"
+git clone https://github.com/Nexarian/xrdp.git --branch mainline_merge "$BUILD_DIR/xrdp"
 cd "$BUILD_DIR/xrdp"
-#sed -i 's|/opt/yami|/usr/local|g' ./sesman/Makefile.am
-#sed -i 's|/opt/yami|/usr/local|g' ./xorgxrdp_helper/xorgxrdp_helper_yami.c
+sed -i 's|/opt/yami|/usr/local|g' ./sesman/Makefile.am
+sed -i 's|/opt/yami|/usr/local|g' ./xorgxrdp_helper/xorgxrdp_helper_yami.c
 ./bootstrap
 XRDP_YAMI_CFLAGS="-I/usr/local/include" XRDP_YAMI_LIBS="-I/usr/local/lib" ./configure \
     --enable-fuse --enable-rfxcodec --enable-pixman --enable-mp3lame \
@@ -59,7 +59,7 @@ make -j $((`nproc` - 1)) clean all
 sudo make install
 
 echo "Building xorgxrdp..."
-git clone https://github.com/neutrinolabs/xorgxrdp.git --branch devel "$BUILD_DIR/xorgxrdp"
+git clone https://github.com/Nexarian/xorgxrdp.git --branch mainline_merge "$BUILD_DIR/xorgxrdp"
 cd "$BUILD_DIR/xorgxrdp"
 # sed -i 's/#define MIN_MS_BETWEEN_FRAMES 40/#define MIN_MS_BETWEEN_FRAMES 16/' module/rdpClientCon.c
 ./bootstrap
