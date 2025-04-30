@@ -120,7 +120,7 @@ cd ${BUILD_DIR}
 git clone ${SRIOV_CLONE} --branch master
 sudo dkms add ./i915-sriov-dkms
 sudo dkms install i915-sriov-dkms/${VERSION}
-sudo sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT=".*"|GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on i915.enable_guc=3 module_blacklist=xe"|' /etc/default/grub
+sudo sed -i "s|GRUB_CMDLINE_LINUX_DEFAULT='.*'|GRUB_CMDLINE_LINUX_DEFAULT='intel_iommu=on i915.enable_guc=3 module_blacklist=xe'|" /etc/default/grub
 
 fi
 
