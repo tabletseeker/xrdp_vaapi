@@ -107,13 +107,14 @@ sudo sed -i -E 's#param=xrdp/xorg_nvidia.conf#param=xrdp/xorg.conf#' /etc/xrdp/s
 sudo sed -i 's/XRDP_USE_HELPER=1/XRDP_USE_HELPER=0/' /etc/xrdp/sesman.ini
 
 #Installing i915_sriov_dkms
+
 if ${SRIOV}; then
 echo "Installing i915_sriov_dkms kernel module"
 SRIOV_CLONE="https://github.com/strongtz/i915-sriov-dkms"
 SRIOV_GIT="${SRIOV_CLONE}/releases/latest"
 VERSION=$(curl -Ls -o /dev/null -w %{url_effective} ${SRIOV_GIT} | sed -e 's@.*/@@')
 
-sudo apt-get install -y build-* git dkms linux-headers-$(uname -r)
+sudo apt-get install -y git dkms linux-headers-$(uname -r)
 cd ${BUILD_DIR}
 git clone ${SRIOV_CLONE} --branch master
 sudo dkms add ./i915-sriov-dkms
