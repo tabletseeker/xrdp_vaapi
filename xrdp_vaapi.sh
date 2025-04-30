@@ -109,6 +109,7 @@ sudo sed -i 's/XRDP_USE_HELPER=1/XRDP_USE_HELPER=0/' /etc/xrdp/sesman.ini
 #Installing i915_sriov_dkms
 
 if ${SRIOV}; then
+
 echo "Installing i915_sriov_dkms kernel module"
 SRIOV_CLONE="https://github.com/strongtz/i915-sriov-dkms"
 SRIOV_GIT="${SRIOV_CLONE}/releases/latest"
