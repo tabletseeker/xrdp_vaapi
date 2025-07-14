@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -x
 sudo -v
 
 # Packages necessary for building the Intel drivers as well as for
