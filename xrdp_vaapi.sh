@@ -24,12 +24,13 @@ sudo apt-get install -y git autoconf libtool pkg-config gcc g++ make libssl-dev 
 #XRDP Build Pre-reqs Part 2 (For some reason apt needs this to be separate)
 sudo apt-get install -y libepoxy-dev
 
-export SOURCE_DIR=$(find ${PWD%${PWD#/*/}} -type d -name "*xrdp_vaapi*" | head -1) 
-BUILD_DIR=${SOURCE_DIR}/xrdp_build
-DRIVER_NAME=iHD
-SRIOV=false
+export SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BUILD_DIR="${SOURCE_DIR}/xrdp_build"
+YAMI_LOG="${SOURCE_DIR}/yami.log"
+DRIVER_NAME="iHD"
+SRIOV="false"
 
-case ${@} in
+case "${@}" in
     
     *--sriov*|*-s*)
     SRIOV=true
@@ -39,12 +40,12 @@ esac
 
 echo "Building Intel YAMI and Media Driver"
 mkdir -p ${BUILD_DIR}
-sudo mkdir -p /usr/local/lib/x86_64-linux-gnu
-${SOURCE_DIR}/yami/omatic/buildyami.sh
+sudo mkdir -p "/usr/local/lib/x86_64-linux-gnu"
+"${SOURCE_DIR}/yami/omatic/buildyami.sh" 2>&1 | tee -a -- "${YAMI_LOG}"
 
-{ sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/i965_drv_video.so /usr/local/lib/x86_64-linux-gnu/;
-sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/iHD_drv_video.so /usr/local/lib/x86_64-linux-gnu/;
-sudo ln -s /usr/local/lib/x86_64-linux-gnu/dri/ /usr/local/lib/dri; } || true
+sudo ln -sf /usr/local/lib/x86_64-linux-gnu/dri/i965_drv_video.so /usr/local/lib/x86_64-linux-gnu/
+sudo ln -sf /usr/local/lib/x86_64-linux-gnu/dri/iHD_drv_video.so /usr/local/lib/x86_64-linux-gnu/
+sudo ln -sf /usr/local/lib/x86_64-linux-gnu/dri/ /usr/local/lib/dri
 
 echo "Building xrdp..."
 git clone https://github.com/Nexarian/xrdp.git --branch mainline_merge "$BUILD_DIR/xrdp"
@@ -138,6 +139,7 @@ sudo update-grub
 sudo update-initramfs -u
 
 echo "Adding LIBVA_DRIVER_NAME ENV Variable to sesman.ini"
+grep -qw "LIBVA_DRIVER_NAME=$DRIVER_NAME" /etc/xrdp/sesman.ini || \
 sudo /bin/bash -c "echo LIBVA_DRIVER_NAME=$DRIVER_NAME >> /etc/xrdp/sesman.ini"
 
 echo "Starting the server..."
