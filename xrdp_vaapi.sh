@@ -2,6 +2,8 @@
 
 set -e
 
+set -x
+
 sudo -v
 
 sudo apt-get update
@@ -30,18 +32,34 @@ YAMI_LOG="${SOURCE_DIR}/yami.log"
 DRIVER_NAME="iHD"
 SRIOV="false"
 
-case "${@}" in
-    
-    *--sriov*|*-s*)
-    SRIOV=true
-    ;;
-    
-esac
+while true; do
+  case "$1" in
+    -s|--sriov)
+      SRIOV="true"
+      shift 1
+      ;;
+    -l|--latest)
+      YAMI_ARGS+=" --latest"
+      shift 1
+      ;;
+    -p|--prefix)
+      YAMI_ARGS+=" --prefix=${2}"
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
 
 echo "Building Intel YAMI and Media Driver"
 mkdir -p ${BUILD_DIR}
 sudo mkdir -p "/usr/local/lib/x86_64-linux-gnu"
-"${SOURCE_DIR}/yami/omatic/buildyami.sh" 2>&1 | tee -a -- "${YAMI_LOG}"
+"${SOURCE_DIR}/yami/omatic/buildyami.sh" ${YAMI_ARGS} 2>&1 | tee -a -- "${YAMI_LOG}"
 
 sudo ln -sf /usr/local/lib/x86_64-linux-gnu/dri/i965_drv_video.so /usr/local/lib/x86_64-linux-gnu/
 sudo ln -sf /usr/local/lib/x86_64-linux-gnu/dri/iHD_drv_video.so /usr/local/lib/x86_64-linux-gnu/
